@@ -1,27 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavBar from "./components/Navbar"
+import Footer from "./components/Footer"
+import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import SplashPage from "./pages/SplashPage"
 
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path={["/", "/books"]}>
-            <Books />
-          </Route>
-          <Route exact path="/books/:id">
-            <Detail />
-          </Route>
-          <Route>
-            <NoMatch />
-          </Route>
-        </Switch>
-      </div>
+    <div>
+      <NavBar/>
+      <Route exact path="/" component={SplashPage} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={Signup} />
+      <Footer/>
+    </div>
     </Router>
   );
 }
