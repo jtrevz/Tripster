@@ -6,20 +6,25 @@ import Footer from "./components/Footer"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import SplashPage from "./pages/SplashPage"
+import {AuthProvider} from "./contexts/authContext"
 
 function App() {
   return (
+    
     <Router>
     <div>
       <NavBar/>
+      <AuthProvider>
       <Switch>
       <Route exact path="/" component={SplashPage} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
       </Switch>
+      </AuthProvider>
       <Footer/>
     </div>
     </Router>
+    
   );
 }
 

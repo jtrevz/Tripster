@@ -1,68 +1,84 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {Row, Col} from 'react-bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import { useAuth } from '../contexts/authContext'
 import './signup.css';
-import { GoogleLogin } from 'react-google-login';
-import Icon from '../components/icon.js'
+// import { GoogleLogin } from 'react-google-login';
 
-function Signup(props) {
-    
-  // handleSubmit = () => {
+function Signup() {
+  // const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+  const {signup} = useAuth();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // };
 
-  const googleSuccess = (res) => {
-    console.log(res);
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError('Passwords do not match')
+    }
+
+    try {
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+    setLoading(false)
   };
 
-  const googleFailure = () => {
-    console.log("Google Sign In was unsuccessful. ");
-  }
+  // const googleSuccess = async (res) => {
+  //   // const result = res?.profileObj;
+  //   // const token = res?.tokenId;
+  //   console.log(res);
+  //   try {
+
+  //   } catch(error){
+  //     console.log(error);
+  //   }
+  // };
+
+  // const googleFailure = (error) => {
+  //   console.log("Google Sign In was unsuccessful. ");
+  // }
 
   return (
   <div>
-    <Form className ="signUp">
+    <Form className="SIGNUP"
+    onSubmit={handleSubmit}>
       <h1>Sign Up</h1>
-      <Row>
-        <Col>
-          <Form.Group controlId="formBasicfName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control type="firstName" placeholder="Enter first name" />
-          </Form.Group>
-        </Col>
-        <Col>
-          <Form.Group controlId="formBasiclname">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control type="lastName" placeholder="Enter last name" />
-          </Form.Group>
-        </Col>
-      </Row>
+      {error && <Alert variant= "danger">{error}</Alert>}
+          {/* <Form.Group controlId="formBasicName">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control type="name" ref={nameRef} placeholder="Enter full name" required/>
+          </Form.Group> */}
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" ref={emailRef} placeholder="Enter email" required/>
       </Form.Group>
 
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" ref={passwordRef} placeholder="Password" required/>
       </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="formBasicPasswordConfirm">
         <Form.Label>Re-Enter Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" ref={passwordConfirmRef} placeholder="Password" required/>
       </Form.Group>
-
-      <Form.Group controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button className="btn-lg btn-block" variant="primary" type="submit">
+      <Button disabled={loading} className="btn-lg btn-block" variant="primary" type="submit">
         Submit
       </Button>
       <div className="or text-center pt-3">
         or
       </div>
-      <GoogleLogin
-      clientId= "GOOGLE ID"
+      {/* <GoogleLogin
+      clientId= "490208347772-9h1p2je2vm9tq47jrpu8q5733p4i65c3.apps.googleusercontent.com"
       render={(renderProps) => (
         <Button 
         className="tn btn-lg btn-google btn-block text-uppercase btn-outline" 
@@ -70,7 +86,7 @@ function Signup(props) {
         onClick={renderProps.onClick} 
         disabled={renderProps.disabled} 
         variant="contained">
-          <img className="googleIcon" src="https://img.icons8.com/color/16/000000/google-logo.png"></img>
+          <img className="googleIcon" alt="Google Alt" src="https://img.icons8.com/color/16/000000/google-logo.png"></img>
           &nbsp;
           Sign In with Google
         </Button>
@@ -78,7 +94,7 @@ function Signup(props) {
       onSuccess={googleSuccess}
       onFailure={googleFailure}
       cookiePolicy='single_host_origin'
-      />
+      /> */}
     </Form>
   </div>
     );

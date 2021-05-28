@@ -1,4 +1,4 @@
-.signUp {
+.SIGNUP {
     width: 100%;
     max-width: 420px;
     padding: 15px;
@@ -9,7 +9,3 @@
 .or {
     margin-bottom: 10px;
 };
-
-img .googleIcon {
-    margin-right: 5px;
-}
