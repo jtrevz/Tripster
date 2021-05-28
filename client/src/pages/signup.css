@@ -5,3 +5,11 @@
     margin: auto;
     height: 100%;
 }
+
+.or {
+    margin-bottom: 10px;
+};
+
+img .googleIcon {
+    margin-right: 5px;
+}
