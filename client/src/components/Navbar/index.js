@@ -6,13 +6,14 @@ import "./style.css";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
+import { Link, useLocation } from "react-router-dom";
 
 
 function NavBar(props) {
     return (
         <div>
 <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+  <Navbar.Brand href="#home"><Link to="/">Tripster</Link></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
