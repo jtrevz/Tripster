@@ -6,6 +6,8 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import SplashPage from "./pages/SplashPage"
 import Itinerary from "./pages/Itinerary"
+import "./App.css";
+ 
 
 function App() {
   return (

@@ -3,6 +3,8 @@ const db = require("../models");
 // Defining methods for the airlinesController
 module.exports = {
   findAll: function(req, res) {
+    console.log("I'm in airlineControllers.js");
+    console.log(req.query);
     db.Airline
       .find(req.query)
       .sort({ airlineName: -1 })

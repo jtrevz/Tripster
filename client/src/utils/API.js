@@ -3,6 +3,7 @@ import axios from "axios";
 export default {
   // Gets all airlines
   getAirlines: function() {
+    console.log("I'm in API.js.getAirlines")
     return axios.get("/api/airlines");
   },
   // Gets the airline with the given id
@@ -28,6 +29,6 @@ export default {
   },
     // Saves a book to the database
   updateTrip: function(tripData) {
-      return axios.post("/api/trips", tripData);
+      return axios.put("/api/trips", tripData);
   }
 };
