@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import { Link, useHistory } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -14,7 +15,7 @@ function Signup() {
   const {signup} = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const history= useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -27,6 +28,7 @@ function Signup() {
       setError('')
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
+      history.push('/temp')
     } catch {
       setError('Failed to create an account')
     }
@@ -59,7 +61,7 @@ function Signup() {
             <Form.Control type="name" ref={nameRef} placeholder="Enter full name" required/>
           </Form.Group> */}
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control type="email" ref={emailRef} placeholder="Enter email" required/>
       </Form.Group>
 
@@ -96,6 +98,8 @@ function Signup() {
       cookiePolicy='single_host_origin'
       /> */}
     </Form>
+    <div className="w-100 text-center mt-2"> Already have an account? <Link to="/login">Log In</Link>
+    </div>
   </div>
     );
   }

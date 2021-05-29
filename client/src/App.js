@@ -7,21 +7,23 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import SplashPage from "./pages/SplashPage"
 import {AuthProvider} from "./contexts/authContext"
+import Temp from "./components/Temp"
 
 function App() {
   return (
     
     <Router>
     <div>
+    <AuthProvider>
       <NavBar/>
-      <AuthProvider>
       <Switch>
       <Route exact path="/" component={SplashPage} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/signup" component={Signup} />
+      <Route exact path = "/temp" component={Temp}/>
       </Switch>
-      </AuthProvider>
       <Footer/>
+      </AuthProvider>
     </div>
     </Router>
     
