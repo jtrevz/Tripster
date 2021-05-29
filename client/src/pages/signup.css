@@ -1,0 +1,11 @@
+.SIGNUP {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+    height: 100%;
+}
+
+.or {
+    margin-bottom: 10px;
+};
