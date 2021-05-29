@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const booksController = require("../../controllers/tripsController");
+const tripsController = require("../../controllers/tripsController");
 
 // Matches with "/api/trips"
 router.route("/")
@@ -11,7 +11,8 @@ router
   .route("/:id")
   .get(tripsController.findById)
   .put(tripsController.update)
-  .delete(tripController.remove);
+  .post(tripsController.create)
+  .delete(tripsController.remove);
 
 
 

@@ -21,30 +21,35 @@ const TripSchema = new Schema({
         type: Date,
         required: true
     },
-    userKey: {
+    userKey: {              //this is the _id of the user
         type: Number,
         required: true
     },
     departureFlightNumber: {
         type: String,
+        trim: true,
         required: false
     },
     returnFlightNumber: {
         type: String,
+        trim: true,
         required: false
     },
     airlineCode: {
-        type: Number,
+        type: String,
+        trim: true,
         required: false
     },
     events: [{
         eventName: {
             type: String,
-            required: true
+            trim: true,
+            required: false
         },
         eventDate: {
             type: Date,
-            required: true
+            trim: true,
+            required: false
         },
         location: {
             type: String,
@@ -58,7 +63,7 @@ const TripSchema = new Schema({
     packingList: [{
         itemName: {
             type: String,
-            required: true
+            required: false
         },
         packedDepartureTrip: Boolean,
         packedReturnTrip: Boolean

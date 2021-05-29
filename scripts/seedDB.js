@@ -3,10 +3,7 @@ const db = require("../models");
 
 // This file empties the airline collection and creates a new airline collection
 
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/tripster"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tripster");
 
 const airlineSeed = [
   {

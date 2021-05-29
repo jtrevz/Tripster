@@ -1,3 +1,4 @@
 module.exports = {
-  Airline: require("./airline")
+  Airline: require("./airline"),
+  Trip: require("./trip")
 };
