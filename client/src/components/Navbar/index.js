@@ -6,12 +6,12 @@ import "./style.css";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
-import { Link, useHistory } from "react-router-dom"
-import { useAuth } from '../contexts/authContext'
-import Alert from 'react-bootstrap/Alert';
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from '../../contexts/authContext'
+import Alert from 'react-bootstrap/Alert';;
 
 
-function NavBar(props) {
+function NavBar() {
 
   const [error, setError] = useState('');
   const {currentUser, logout}= useAuth();
@@ -36,12 +36,11 @@ function NavBar(props) {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.2">{currentUser.email}</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Create a New Trip</NavDropdown.Item>
-            <NavDropdown.Divider />
-            {}
-            <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>Sign Out</NavDropdown.Item>
+            <NavDropdown.Item >{currentUser ? currentUser.email :<Link to="/signup">Sign Up</Link>}</NavDropdown.Item>
+            {currentUser ? <NavDropdown.Item onClick={handleLogout}>Sign Out</NavDropdown.Item> :<Link to="/login">Log In</Link>}
+            {/* <NavDropdown.Item >Profile</NavDropdown.Item>
+            <NavDropdown.Item >Create a New Trip</NavDropdown.Item>
+            <NavDropdown.Divider /> */}
           </NavDropdown>
         </Nav>
         <Form inline>

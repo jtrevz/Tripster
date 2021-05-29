@@ -6,26 +6,26 @@ import Footer from "./components/Footer"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import SplashPage from "./pages/SplashPage"
-import {AuthProvider} from "./contexts/authContext"
+import { AuthProvider } from "./contexts/authContext"
 import Temp from "./components/Temp"
+import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
   return (
-    
-    <Router>
-    <div>
-    <AuthProvider>
-      <NavBar/>
-      <Switch>
-      <Route exact path="/" component={SplashPage} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
-      <Route exact path = "/temp" component={Temp}/>
-      </Switch>
-      <Footer/>
-      </AuthProvider>
-    </div>
-    </Router>
+      <Router>
+        <div>
+        <AuthProvider>
+          <NavBar/>
+            <Switch>
+              <Route exact path="/" component={SplashPage} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <PrivateRoute exact path = "/temp" component={Temp}/>
+            </Switch>
+          <Footer/>
+          </AuthProvider>
+        </div>
+      </Router>
     
   );
 }
