@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../contexts/authContext'
-import './signup.css';
 // import { GoogleLogin } from 'react-google-login';
 
 function Signup() {
@@ -51,55 +50,33 @@ function Signup() {
   // }
 
   return (
-  <div>
-    <Form className="SIGNUP"
-    onSubmit={handleSubmit}>
-      <h1>Sign Up</h1>
-      {error && <Alert variant= "danger">{error}</Alert>}
-          {/* <Form.Group controlId="formBasicName">
-            <Form.Label>Full Name</Form.Label>
-            <Form.Control type="name" ref={nameRef} placeholder="Enter full name" required/>
-          </Form.Group> */}
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" ref={emailRef} placeholder="Enter email" required/>
-      </Form.Group>
+    <div>
+    <div className="text-center mt-5 container">
+      <div className="form-signin justify-content-center">
+<form onSubmit={handleSubmit} className=" col-xs-6 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+<img className="mb-4" src="./images/Logo.png" alt="" width="120" height="120"/>
+<h1 className="h3 mb-3 fw-normal">Please Sign Up</h1>
+{error && <Alert variant= "danger">{error}</Alert>}
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" ref={passwordRef} placeholder="Password" required/>
-      </Form.Group>
-      <Form.Group controlId="formBasicPasswordConfirm">
-        <Form.Label>Re-Enter Password</Form.Label>
-        <Form.Control type="password" ref={passwordConfirmRef} placeholder="Password" required/>
-      </Form.Group>
-      <Button disabled={loading} className="btn-lg btn-block" variant="primary" type="submit">
-        Submit
-      </Button>
-      <div className="or text-center pt-3">
-        or
-      </div>
-      {/* <GoogleLogin
-      clientId= "490208347772-9h1p2je2vm9tq47jrpu8q5733p4i65c3.apps.googleusercontent.com"
-      render={(renderProps) => (
-        <Button 
-        className="tn btn-lg btn-google btn-block text-uppercase btn-outline" 
-        variant="primary" 
-        onClick={renderProps.onClick} 
-        disabled={renderProps.disabled} 
-        variant="contained">
-          <img className="googleIcon" alt="Google Alt" src="https://img.icons8.com/color/16/000000/google-logo.png"></img>
-          &nbsp;
-          Sign In with Google
-        </Button>
-      )}
-      onSuccess={googleSuccess}
-      onFailure={googleFailure}
-      cookiePolicy='single_host_origin'
-      /> */}
-    </Form>
-    <div className="w-100 text-center mt-2"> Already have an account? <Link to="/login">Log In</Link>
-    </div>
+<div className="form-floating mb-2">
+  <input ref={emailRef} required type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
+  <label htmlFor="floatingInput">Email address</label>
+</div>
+<div className="form-floating mb-2">
+  <input ref={passwordRef} required type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+  <label htmlFor="floatingPassword">Password</label>
+</div>
+<div className="form-floating">
+  <input ref={passwordConfirmRef} required type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+  <label htmlFor="floatingPassword">Re-enter Password</label>
+</div>
+<small className="text-muted">If you already have an account click <Link to="/login">here</Link>.</small>
+
+<button disabled={loading} className="color-btn mt-2 w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+<p className="mt-5 mb-3 text-muted">© 2021</p>
+</form>
+</div>
+        </div>
   </div>
     );
   }

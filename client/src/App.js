@@ -9,6 +9,7 @@ import SplashPage from "./pages/SplashPage"
 import { AuthProvider } from "./contexts/authContext"
 import Temp from "./components/Temp"
 import PrivateRoute from "./components/PrivateRoute"
+import Profile from "./pages/Profile"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route exact path="/" component={SplashPage} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile" component={Profile} />
               <PrivateRoute exact path = "/temp" component={Temp}/>
             </Switch>
           <Footer/>
