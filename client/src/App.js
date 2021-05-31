@@ -10,8 +10,13 @@ import { AuthProvider } from "./contexts/authContext"
 import Temp from "./components/Temp"
 import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
+import AddTrip from "./components/AddTrip"
+
+
+
 
 function App() {
+
   return (
       <Router>
         <div>
@@ -22,6 +27,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/addtrip" component={AddTrip} />
               <PrivateRoute exact path = "/temp" component={Temp}/>
             </Switch>
           <Footer/>

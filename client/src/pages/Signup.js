@@ -1,7 +1,5 @@
 import React, {useRef, useState} from "react";
 import { Link, useHistory } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../contexts/authContext'
 // import { GoogleLogin } from 'react-google-login';
