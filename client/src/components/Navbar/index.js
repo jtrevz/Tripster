@@ -31,9 +31,9 @@ function NavBar() {
 
   return (
   <div>
-<nav class="navbar-collapse navbar-light bg-light">
+<nav className="navbar-collapse navbar-light bg-light">
 <div className="p-3">
-<h2 className="text-center display-6"><img src="./images/Logo.png" width="50" height="50" class="d-inline-block mb-2 mr-1" alt=""/><Link to="/">Tripster</Link></h2>      
+<h2 className="text-center display-6"><img src="./images/Logo.png" width="50" height="50" className="d-inline-block mb-2 mr-1" alt=""/><Link to="/">Tripster</Link></h2>      
 </div>
 <div className="text-center text-white" id="contact-me">
         <div className="container">
