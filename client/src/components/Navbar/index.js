@@ -41,22 +41,22 @@ function NavBar() {
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-light"><Link to="/signup">Signup</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link to="/signup">Signup</Link></button></a>
             <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-light"><Link to="/login">Login</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link to="/login">Login</Link></button></a>
             <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-light"><Link to="/profile">Profile</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link to="/profile">Profile</Link></button></a>
             <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-light"><Link to="/trip-planner">New Trip</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link to="/trip-planner">New Trip</Link></button></a>
         </div>
       </div>
 </nav>

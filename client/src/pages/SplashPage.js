@@ -14,10 +14,10 @@ function SplashPage(props) {
                 <h1 class="display-4">Hello, world!</h1>
                 <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                 <hr class="my-4"/>
-                <a class="btn btn-primary btn-lg mr-4" href="#" role="button">Login</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Sign up</a>
+                <a class="btn btn-primary btn-color btn-lg mr-4" href="#" role="button"><Link to="/login">Login</Link></a>
+                <a class="btn btn-primary btn-color btn-lg" href="#" role="button"><Link to="/signup">Signup</Link></a>
             </div>
-            
+
             <div id="project">
       <div class="container px-4 py-5" id="custom-cards">
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">

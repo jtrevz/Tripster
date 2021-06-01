@@ -4,14 +4,15 @@
 header{
     background-color:blue;
 }
+
 .btn-color {
     text-transform: uppercase;
-    transition: 2s;
+    transition: 1.5s !important;
     background-size: 200% auto;
-    color: white;
+    color: white !important;
     box-shadow: 0 0 20px #eee;
     background-image: linear-gradient(to right, #61107f9d 0%, #da0b34 51%, #62107f 100%);
-    border-style: none;
+    border-style: none !important;
    }
 
    .btn-color:hover {
@@ -30,3 +31,5 @@ header{
   .textshadow {
     text-shadow: 1px 2px 5px black;
   }
+
+  
