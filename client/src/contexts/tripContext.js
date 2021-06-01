@@ -1,16 +1,9 @@
-import React, {useState, useContext} from "react";
-import { useAuth } from '../../contexts/authContext'
+import React from 'react';
 
-const TripContext = React.createContext()
+const TripContext = React.createContext({
+    currentTrip: {},
+    userTrips:{},
+    handleSubmit: () => {}
+})
 
-export function useTrip() {
-    return useContext(TripContext)
-}
-
-export function ModalProvider ({children}) {
-    const[currentUser] = useAuth();
-    const[currentTrip, setCurrentTrip] = useState()
-    const[tripObject, setTripObject] = useState({})
-    
-   
-}
+export default TripContext

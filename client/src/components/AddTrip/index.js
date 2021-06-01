@@ -1,13 +1,22 @@
 import React, {useRef, useState} from 'react';
 import Alert from 'react-bootstrap/Alert';
+import { useAuth } from '../../contexts/authContext'
+import TripContext from '../../contexts/AddTrip'
+import API from '../../utils/API'
+
 
 function AddTrip () {
     const tripNameRef = useRef()
     const cityRef = useRef()
     const startDateRef = useRef()
     const endDateRef = useRef()
+
     const [error, setError] = useState('');
-    const [tripObject, setTripObject] = useState({})
+    const {currentUser} = useAuth();
+    const {currentTrip, setCurrentTrip} = useState({})
+    const {inputTrip, setInputTrip} = useState({})
+
+
 
     function handleSubmit (e) {
         e.preventDefault();
@@ -16,11 +25,24 @@ function AddTrip () {
             return setError("End date must be after star date")
         }
 
+        setInputTrip ({
+            tripName: (tripNameRef.current.value),
+            destination: (cityRef.current.value),
+            startDate: (startDateRef.current.value),
+            endDate: (endDateRef.current.value),
+            userEmail: (currentUser.email)
+        })
+
+        // API.saveTrip(inputTrip)
+
         console.log(tripNameRef.current.value);
         console.log(cityRef.current.value)
         console.log(startDateRef.current.value);
         console.log(endDateRef.current.value);
+        console.log(inputTrip.current.value);
         return console.log("hi");
+
+        
     }
 
     return ( 
