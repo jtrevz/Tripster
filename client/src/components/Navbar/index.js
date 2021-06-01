@@ -8,6 +8,10 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../../contexts/authContext'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import "./style.css"
 
 
 
@@ -27,6 +31,25 @@ function NavBar() {
 
   return (
   <div>
+
+
+<nav class="navbar-collapse navbar-light bg-light">
+<div className="p-3">
+<h2 className="text-center display-6"><img src="./images/Logo.png" width="50" height="50" class="d-inline-block mb-2 mr-1" alt=""/>Tripster</h2>      
+</div>
+</nav>
+<nav class="stroke">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Downloads</a></li>
+      <li><a href="#">More</a></li>
+      <li><a href="#">Nice staff</a></li>
+    </ul>
+  </nav>
+
+
+
     <Navbar bg="light" expand="lg">
       <Navbar.Brand><Link to="/">Tripster</Link></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
