@@ -21,19 +21,17 @@ const TripSchema = new Schema({
         type: Date,
         required: true
     },
-    userKey: {              //this is the _id of the user
-        type: Number,
+    userEmail: {              //this is the _id of the user
+        type: String,
         required: true
     },
     departureFlightNumber: {
         type: String,
-        trim: true,
-        required: false
+        trim: true
     },
     returnFlightNumber: {
         type: String,
-        trim: true,
-        required: false
+        trim: true
     },
     airlineCode: {
         type: String,
