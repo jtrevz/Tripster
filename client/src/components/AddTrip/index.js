@@ -22,7 +22,21 @@ function AddTrip () {
         console.log(inputTrip)
     }
 
-    function handleSubmit () {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (inputTrip.endDate < inputTrip.startDate) {
+            return setError("End date must be after start date")
+        }
+
+        var today = new Date()
+        var todayDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+
+        if (todayDate > inputTrip.startDate) {
+           return setError('Invalid start date') 
+        }
+
+        console.log("In handleSaveTrip()");
         let tripObj = {
             userEmail: currentUser.email,
         }
@@ -31,22 +45,19 @@ function AddTrip () {
             userEmail: currentUser.email
          }))
 
-        API.saveTrip(inputTrip)
+        console.log(currentUser);
+
+        console.log(inputTrip);
+
+        API.saveTrip({
+            tripName: inputTrip.tripName,
+            destination: inputTrip.destination,
+            startDate: inputTrip.startDate,
+            endDate: inputTrip.endDate,
+            userEmail: currentUser.email,
+        })
+        .catch(err => console.log(err));
     }
-
-    // function  handleSubmit (e) {
-    //     e.preventDefault();
-
-    //     if (endDateRef.current.value < startDateRef.current.value) {
-    //         return setError("End date must be after start date")
-    //     }
-
-
-    //     // API.saveTrip(inputTrip)
-
-
-        
-    // }
 
     return ( 
        <div>
@@ -56,7 +67,7 @@ function AddTrip () {
                 {error && <Alert variant= "danger">{error}</Alert>}
                 <div className="mb-3">
                     <label className="form-label">Trip Name</label>
-                    <input onChange={handleChange} name='tripName' type="city" className="form-control" placeholder="e.g. Girls Trip Summer 2022" />
+                    <input onChange={handleChange} name="tripName" type="city" className="form-control" placeholder="e.g. Girls Trip Summer 2022" />
                     <div id="destinationHelp" className="form-text"></div>
                 </div>
                 <div className="mb-3">
