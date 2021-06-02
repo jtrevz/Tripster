@@ -1,14 +1,13 @@
 import React, {useRef, useState} from 'react';
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../../contexts/authContext'
-import TripContext from '../../contexts/TripContext'
 import API from '../../utils/API'
 
 
 function AddTrip () {
     const [error, setError] = useState('');
     const {currentUser} = useAuth();
-    const [currentTrip, setCurrentTrip] = useState({})
+    const [currentTrip, setCurrentTrip] = useState()
     const [inputTrip, setInputTrip] = useState({})
 
 
@@ -29,17 +28,29 @@ function AddTrip () {
             return setError("End date must be after start date")
         }
 
-        var today = new Date()
-        var todayDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+        var today = new Date();
+        var dd = today.getDate();
 
-        if (todayDate > inputTrip.startDate) {
+        var mm = today.getMonth()+1; 
+        var yyyy = today.getFullYear();
+        if(dd<10) 
+        {
+            dd='0'+dd;
+        } 
+
+        if(mm<10) 
+        {
+            mm='0'+mm;
+        } 
+
+        today = yyyy+'-'+mm+'-'+dd
+
+        console.log(today);
+        if (today > inputTrip.startDate) {
            return setError('Invalid start date') 
         }
 
         console.log("In handleSaveTrip()");
-        let tripObj = {
-            userEmail: currentUser.email,
-        }
         setInputTrip(prevState=> ({
             ...prevState,
             userEmail: currentUser.email
@@ -56,6 +67,10 @@ function AddTrip () {
             endDate: inputTrip.endDate,
             userEmail: currentUser.email,
         })
+        .then(res => {
+            console.log(res.data._id);
+            setCurrentTrip(res.data._id)
+        }) 
         .catch(err => console.log(err));
     }
 

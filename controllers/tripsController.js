@@ -3,8 +3,9 @@ const db = require("../models");
 // Defining methods for the tripsController
 module.exports = {
   findAll: function(req, res) {
+    console.log(req.body)
     db.Trip
-      .find(req.query)
+      .find({userEmail: req.body})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

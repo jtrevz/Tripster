@@ -13,7 +13,7 @@ export default {
    // Gets all trips for a given user
    // ------> This needs work <------
   getTrips: function(userData) {
-    return axios.get("/api/trips", userData);
+    return axios.get("/api/trips"+userData);
   },
   // Gets the trip with the given id
   getTrip: function(id) {

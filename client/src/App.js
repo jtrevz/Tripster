@@ -30,6 +30,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/addtrip" component={AddTrip} />
+              <Route exact path="/profile" component={Profile} />
               <PrivateRoute exact path = "/temp" component={Temp}/>
             </Switch>
           <Footer/>

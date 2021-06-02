@@ -11,6 +11,8 @@ export function useAuth() {
 export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
+    const [currentUserTrips, setCurrentUserTrips] = useState([])
+    const [currentTrip, setCurrentTrip] = useState()
     
 
     function signup(email, password) {
@@ -38,7 +40,9 @@ export function AuthProvider({children}) {
         currentUser,
         login,
         signup,
-        logout
+        logout,
+        currentTrip,
+        currentUserTrips
     }
 
     return(
