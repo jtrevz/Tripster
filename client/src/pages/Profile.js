@@ -7,6 +7,7 @@ function Profile(props) {
   const [currentUserTrips, setCurrentUserTrips] = useState([])
 
   useEffect(() => {
+    console.log("in profiles.js")
     console.log(currentUser.email)
     API.getTrips(currentUser.email)
     .then(trips =>
