@@ -23,7 +23,7 @@ const TripSchema = new Schema({
     },
     userEmail: {              //this is the _id of the user
         type: String,
-        required: true
+        required: false
     },
     departureFlightNumber: {
         type: String,
