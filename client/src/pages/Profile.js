@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
+import {useHistory} from 'react-router-dom'
 import API from '../utils/API'
 
 function Profile(props) {
   const {currentUser} = useAuth()
   const [currentUserTrips, setCurrentUserTrips] = useState([])
-  const temp = []
+  const [currentTrip, setCurrentTrip] = useState()
+  const history = useHistory();
 
   useEffect (() => {
     console.log("in profiles.js")
@@ -18,6 +20,12 @@ function Profile(props) {
   },[] 
   )
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setCurrentTrip(e.currentTarget.value)
+    history.push('/itinerary')
+  }
+
     return (
       <div>
       <main role="main" className="container">
@@ -28,10 +36,12 @@ function Profile(props) {
           return (
             <div className="media text-muted pt-3">
           <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <button onClick={handleSubmit} value={trip._id}>
             <strong className="d-block text-gray-dark">
-              <h4>{trip.tripName}</h4>
+             <h4>{trip.tripName}</h4>
               </strong>
             <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
+            </button>
           </div>
           </div>)
          })
