@@ -6,19 +6,21 @@ function Profile(props) {
   const {currentUser} = useAuth()
   const [currentUserTrips, setCurrentUserTrips] = useState([])
 
-  useEffect(() => {
+  useEffect (() => {
     console.log("in profiles.js")
     console.log(currentUser.email)
     API.getTrips(currentUser.email)
-    .then(trips =>
-      console.log(trips))
-  })
+    .then(trips => {
+      setCurrentUserTrips(...trips.data)
+    })
+  },[currentUserTrips]
+  )
 
     return (
       <div>
       <main role="main" className="container">
       <div className="my-3 p-3 bg-white rounded box-shadow">
-        <h6 className="border-bottom border-gray pb-2 mb-0">All Trips</h6>
+    <h6 className="border-bottom border-gray pb-2 mb-0">{currentUserTrips._id}</h6>
         <div className="media text-muted pt-3">
           <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong className="d-block text-gray-dark">
