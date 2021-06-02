@@ -11,6 +11,7 @@ import Temp from "./components/Temp"
 import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
+import TripContext from "./contexts/TripContext"
 
 
 
@@ -21,6 +22,7 @@ function App() {
       <Router>
         <div>
         <AuthProvider>
+          <TripContext.Provider>
           <NavBar/>
             <Switch>
               <Route exact path="/" component={SplashPage} />
@@ -28,9 +30,11 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/addtrip" component={AddTrip} />
+              <Route exact path="/profile" component={Profile} />
               <PrivateRoute exact path = "/temp" component={Temp}/>
             </Switch>
           <Footer/>
+          </TripContext.Provider>
           </AuthProvider>
         </div>
       </Router>

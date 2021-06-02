@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const tripsController = require("../../controllers/tripsController");
 
+
 // Matches with "/api/trips"
 router.route("/")
-  .get(tripsController.findAll)
+  .get(tripsController.find)
+  // .get(tripsController.findAll)
   .post(tripsController.create);
 
 // Matches with "/api/trips/:id"
@@ -11,7 +13,7 @@ router
   .route("/:id")
   .get(tripsController.findById)
   .put(tripsController.update)
-  .post(tripsController.create)
+  .post(tripsController.find)
   .delete(tripsController.remove);
 
 

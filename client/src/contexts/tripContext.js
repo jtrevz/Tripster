@@ -6,4 +6,4 @@ const TripContext = React.createContext({
     handleSubmit: () => {}
 })
 
-export default TripContext
+export default TripContext;
