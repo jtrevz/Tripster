@@ -6,7 +6,6 @@ import API from '../utils/API'
 function Profile(props) {
   const {currentUser} = useAuth()
   const [currentUserTrips, setCurrentUserTrips] = useState([])
-  const [currentTrip, setCurrentTrip] = useState()
   const history = useHistory();
 
   useEffect (() => {
@@ -20,10 +19,11 @@ function Profile(props) {
   },[] 
   )
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e)  {
     e.preventDefault()
-    setCurrentTrip(e.currentTarget.value)
-    history.push('/itinerary')
+    // await setCurrentTrip(e.currentTarget.value)
+    // if(currentTrip)
+    {history.push('/itinerary/' + e.currentTarget.value )}
   }
 
     return (
