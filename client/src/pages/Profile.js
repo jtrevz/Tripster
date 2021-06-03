@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
+import {useHistory} from 'react-router-dom'
 import API from '../utils/API'
-// import Trip from '../components/Trip.js'
+
 
 function Profile(props) {
   const {currentUser} = useAuth()
   const [currentUserTrips, setCurrentUserTrips] = useState([])
-  const temp = []
+  const history = useHistory();
 
   useEffect (() => {
     console.log("in profiles.js")
@@ -18,25 +19,39 @@ function Profile(props) {
     })
   },[] )
 
+  async function handleSubmit(e)  {
+    e.preventDefault()
+    // await setCurrentTrip(e.currentTarget.value)
+    // if(currentTrip)
+    {history.push('/itinerary/' + e.currentTarget.value )}
+  }
+
     return (
       <div>
       <main role="main" className="container">
       <div className="my-3 p-3 bg-white rounded box-shadow">
+<<<<<<< HEAD
         <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
         <div className="media text-muted pt-3">
+=======
+    <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
+>>>>>>> 71688d5a24a2d8b2314d361c7e1ebe3136fcce7c
         {currentUserTrips.length ? (
          currentUserTrips.map(trip => {
           return (
+            <div className="media text-muted pt-3">
           <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <button onClick={handleSubmit} value={trip._id}>
             <strong className="d-block text-gray-dark">
-              <h4>{trip.tripName}</h4>
+             <h4>{trip.tripName}</h4>
               </strong>
             <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
+            </button>
+          </div>
           </div>)
          })
         ) : (<h3>No Trips Available</h3>) 
         } 
-        </div>
         <h6 className="d-block mt-3">
           <a href="#">+ Add Trip</a>
         </h6>

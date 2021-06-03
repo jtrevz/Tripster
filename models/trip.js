@@ -49,7 +49,7 @@ const TripSchema = new Schema({
             trim: true,
             required: false
         },
-        location: {
+        time: {
             type: String,
             required: false
         },

@@ -28,7 +28,8 @@ module.exports = {
   },
   update: function(req, res) {
     db.Trip
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .update({ _id: req.params.id }, 
+        {$push: {events:req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
