@@ -1,7 +1,10 @@
-import React, {useRef, useState} from 'react';
+import { set } from 'mongoose';
+import React, {useRef, useState, useEffect} from 'react';
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../../contexts/authContext'
-import API from '../../utils/API'
+import API from '../../utils/API';
+import FlightAPI from "../../utils/FlightAPI";
+// import FlightData from "./FlightData";
 
 
 function AddTrip () {
@@ -9,7 +12,27 @@ function AddTrip () {
     const {currentUser} = useAuth();
     const [currentTrip, setCurrentTrip] = useState()
     const [inputTrip, setInputTrip] = useState({})
+    const [airlines, setAirlines] = useState([]);
+    const [confirm, setConfirm] = useState(false);
+    const [message1, setMessage1] = useState("");
+    const [message2, setMessage2] = useState("");
 
+    useEffect(() => {
+        loadAirlines();
+   
+      }, [])
+
+
+    let loadAirlines = async => {
+    console.log("I'm in loadAirlines");
+    API.getAirlines()
+        .then(res => {
+        console.log(res.data);
+        setAirlines(res.data);
+        return res.data;
+        })
+        .catch(err => console.log(err));
+    };
 
 
     function handleChange (e) {
@@ -19,10 +42,69 @@ function AddTrip () {
             [name]: value
         }))
         console.log(inputTrip)
+        setConfirm(false);
     }
+
+
+
+    const handleFlightEntry = () => {
+        console.log("I'm in handleFlightEntry");
+        console.log("flightNum = " + inputTrip.departureFlightlightNumber);
+        console.log("airlineCode = " + inputTrip.airlineCode);
+        console.log("flightDate = " + inputTrip.startDate);
+        FlightAPI.getFlightData(inputTrip.departureFlightNumber, inputTrip.airlineCode, inputTrip.startDate)
+            .then(res => {
+                console.log(res.data);
+                console.log(res.data[0].arrival.airport.name);
+                // return (<p>{res.data[0].arrival.airport.name}</p>);
+                setMessage1("Departing Flight: " + res.data[0].departure.scheduledTimeLocal + " " + res.data[0].departure.airport.municipalityName + 
+                    "(" + res.data[0].departure.airport.iata + ") " +
+                    " to " + res.data[0].arrival.airport.municipalityName + 
+                            "(" + res.data[0].arrival.airport.iata + ") ");
+            })
+            .then (res => {
+                FlightAPI.getFlightData(inputTrip.returnFlightNumber, inputTrip.airlineCode, inputTrip.endDate)
+                .then(res => {
+                    console.log(res.data);
+                    console.log(res.data[0].arrival.airport.name);
+                    // return (<p>{res.data[0].arrival.airport.name}</p>);
+                    setMessage2("Returning Flight: " + res.data[0].departure.scheduledTimeLocal + " " + res.data[0].departure.airport.municipalityName + 
+                        "(" + res.data[0].departure.airport.iata + ") " +
+                        " to " + res.data[0].arrival.airport.municipalityName + 
+                                "(" + res.data[0].arrival.airport.iata + ") ");
+                })
+                .catch (err => {
+                    console.log(err);
+                    setMessage1("Please Verify Flight Data");
+                })                
+            })
+            .catch (err => {
+                console.log(err);
+                setMessage1("Please Verify Flight Data");
+            })
+    }    
+
+
+    function confirmData (e) {
+        e.preventDefault();
+        console.log("I'm in confirmData");
+        setConfirm(true);
+        if (inputTrip.airlineCode && inputTrip.departureFlightNumber &&
+            inputTrip.startDate && inputTrip.returnFlightNumber &&
+            inputTrip.endDate) {
+            
+            handleFlightEntry();
+        } else {
+            setMessage1("Please Verify Your Flight Data");
+        }
+
+    }
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setConfirm(false);
 
         if (inputTrip.endDate < inputTrip.startDate) {
             return setError("End date must be after start date")
@@ -66,18 +148,30 @@ function AddTrip () {
             startDate: inputTrip.startDate,
             endDate: inputTrip.endDate,
             userEmail: currentUser.email,
+            airlineCode: inputTrip.airlineCode,
+            departureFlightNumber: inputTrip.departureFlightNumber,
+            returnFlightNumber: inputTrip.returnFlightNumber
         })
         .then(res => {
             console.log(res.data._id);
-            setCurrentTrip(res.data._id)
+            setCurrentTrip(res.data._id);
+            // setInputTrip({
+            //     tripName: "",
+            //     destination: ""
+            // });
         }) 
         .catch(err => console.log(err));
+
+        var frm = document.querySelector("#trip-form");
+        frm.submit();
+        frm.reset();
+ 
     }
 
     return ( 
        <div>
            <div className="container mt-5">
-           <form onSubmit={handleSubmit}>
+           <form id="trip-form" onSubmit={confirm ? handleSubmit : confirmData }>
                 <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
                 {error && <Alert variant= "danger">{error}</Alert>}
                 <div className="mb-3">
@@ -92,15 +186,51 @@ function AddTrip () {
                 </div>
                 <div className="mb-3 row">
                     <div className="col">
-                        <label  className="form-label"> Start Date</label>
+                        <label  className="form-label">Airline</label>
+                        {airlines.length ? (
+                            <div> 
+                                <select name="airlineCode" className="form-select" onChange={handleChange}>
+                                    <option>Select Airline</option>
+                                    {airlines.map(airline => {
+                                        return (<option value={airline.airlineCode}>{airline.airlineName}</option>
+                                    )})}
+                                </select>
+                            </div>  ) : <div>""</div> }
+                    </div>
+                </div>          
+                <div className="mb-3 row">
+                    <div className="col-3">
+                        <label  className="form-label"> Departure Date</label>
                         <input onChange={handleChange} name="startDate" type="date" className="form-control" id="startDate"/>
                     </div>
-                    <div className="col">
-                        <label className="form-label"> End Date</label>
+                    <div className="col-3">
+                        <label  className="form-label">Departing Flight</label>
+                        <input onChange={handleChange} name="departureFlightNumber" className="form-control" id="startDate"/>
+                    </div>
+                    <div className="col-3">
+                        <label className="form-label"> Return Date</label>
                         <input onChange={handleChange} name="endDate" type="date" className="form-control" id="endDate"/>
                     </div>
+                    <div className="col-3">
+                        <label  className="form-label">Return Flight</label>
+                        <input onChange={handleChange} name="returnFlightNumber" className="form-control" id="startDate"/>
+                    </div>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>  
+                <div className="row">
+                   <p className="lead">{(message1.length > 0) && message1}</p> 
+                   <p className="lead">{(message2.length > 0) && message2}</p> 
+                </div>
+                <div className="row">
+                    <div className="text-center">
+                        {confirm && 
+                        <button type="submit" className="btn btn-primary px-4">Submit</button>  
+                        }
+                        {!confirm &&
+                        <button type="submit" className="btn btn-primary px-4">Confirm</button>                  
+                        }
+                    </div>
+
+                </div>
             </form>
            </div>
        </div>

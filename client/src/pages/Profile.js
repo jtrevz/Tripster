@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
 import API from '../utils/API'
-import Trip from '../components/Trip.js'
+// import Trip from '../components/Trip.js'
 
 function Profile(props) {
   const {currentUser} = useAuth()
@@ -16,14 +16,13 @@ function Profile(props) {
       setCurrentUserTrips(trips.data)
       console.log(currentUserTrips)
     })
-  },[] 
-  )
+  },[] )
 
     return (
       <div>
       <main role="main" className="container">
       <div className="my-3 p-3 bg-white rounded box-shadow">
-    <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
+        <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
         <div className="media text-muted pt-3">
         {currentUserTrips.length ? (
          currentUserTrips.map(trip => {
