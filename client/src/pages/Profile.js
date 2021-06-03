@@ -3,6 +3,7 @@ import {useAuth} from '../contexts/authContext'
 import {useHistory} from 'react-router-dom'
 import API from '../utils/API'
 
+
 function Profile(props) {
   const {currentUser} = useAuth()
   const [currentUserTrips, setCurrentUserTrips] = useState([])
@@ -16,8 +17,7 @@ function Profile(props) {
       setCurrentUserTrips(trips.data)
       console.log(currentUserTrips)
     })
-  },[] 
-  )
+  },[] )
 
   async function handleSubmit(e)  {
     e.preventDefault()
