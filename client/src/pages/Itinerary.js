@@ -2,31 +2,38 @@ import React from "react";
 
 
 function Itinerary(props) {
+
+    function handleChange() {
+
+    }
     return (
         <div>
            <div className="container mt-5">
-           <form onSubmit={handleSubmit}>
-                <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
-                {error && <Alert variant= "danger">{error}</Alert>}
+           <form>
+                <h1 className="h3 mb-3 fw-normal">Chicago 2021</h1>
                 <div className="mb-3">
-                    <label className="form-label">Trip Name</label>
-                    <input onChange={handleChange} name="tripName" type="city" className="form-control" placeholder="e.g. Girls Trip Summer 2022" />
+                    <label className="form-label">Event</label>
+                    <input onChange={handleChange} name="tripName" type="city" className="form-control" placeholder="" />
                     <div id="destinationHelp" className="form-text"></div>
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Destination</label>
-                    <input onChange={handleChange} name="destination" type="city" className="form-control" placeholder="e.g. New York, Miami" />
-                    <div id="destinationHelp" className="form-text"></div>
+                        <label  className="form-label">Date</label>
+                        <input onChange={handleChange} name="startDate" type="date" className="form-control" id="startDate"/>
                 </div>
                 <div className="mb-3 row">
                     <div className="col">
-                        <label  className="form-label"> Start Date</label>
-                        <input onChange={handleChange} name="startDate" type="date" className="form-control" id="startDate"/>
+                        <label  className="form-label">Start Time</label>
+                        <input onChange={handleChange} name="startDate" type="time" className="form-control" id="startDate"/>
                     </div>
                     <div className="col">
-                        <label className="form-label"> End Date</label>
-                        <input onChange={handleChange} name="endDate" type="date" className="form-control" id="endDate"/>
+                        <label className="form-label">End Time</label>
+                        <input onChange={handleChange} name="endDate" type="time" className="form-control" id="endDate"/>
                     </div>
+                    <div className="mb-3">
+                    <label className="form-label">Notes</label>
+                    <input onChange={handleChange} name="destination" type="text" className="form-control" placeholder="e.g. Reservations under John Smith, dress code enforced" />
+                    <div id="destinationHelp" className="form-text"></div>
+                </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>  
             </form>
