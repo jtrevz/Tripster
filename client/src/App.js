@@ -13,6 +13,7 @@ import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
 import TripContext from "./contexts/tripContext"
 import Itinerary from "./pages/Itinerary"
+import "./style.css"
 
 
 
