@@ -12,7 +12,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
 import "./style.css"
-import TripContext from "./contexts/TripContext"
+import TripContext from "./contexts/tripContext"
 
 
 
