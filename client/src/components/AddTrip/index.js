@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { set } from 'mongoose';
 import React, {useRef, useState, useEffect} from 'react';
 import Alert from 'react-bootstrap/Alert';
@@ -56,9 +57,10 @@ function AddTrip () {
             .then(res => {
                 console.log(res.data);
                 console.log(res.data[0].arrival.airport.name);
-                // return (<p>{res.data[0].arrival.airport.name}</p>);
-                setMessage1("Departing Flight: " + res.data[0].departure.scheduledTimeLocal + " " + res.data[0].departure.airport.municipalityName + 
-                    "(" + res.data[0].departure.airport.iata + ") " +
+                setMessage1("Departing Flight: " + res.data[0].airline.name + " Airlines " + "Flight: " + 
+                    res.data[0].number + " departing at " + moment(res.data[0].departure.scheduledTimeLocal).format('MM-DD-YYYY h:mm a') + 
+                    " from " + res.data[0].departure.airport.municipalityName + 
+                    "(" + res.data[0].departure.airport.iata + ") " + " to " +
                     " to " + res.data[0].arrival.airport.municipalityName + 
                             "(" + res.data[0].arrival.airport.iata + ") ");
             })
@@ -67,20 +69,31 @@ function AddTrip () {
                 .then(res => {
                     console.log(res.data);
                     console.log(res.data[0].arrival.airport.name);
-                    // return (<p>{res.data[0].arrival.airport.name}</p>);
-                    setMessage2("Returning Flight: " + res.data[0].departure.scheduledTimeLocal + " " + res.data[0].departure.airport.municipalityName + 
-                        "(" + res.data[0].departure.airport.iata + ") " +
-                        " to " + res.data[0].arrival.airport.municipalityName + 
-                                "(" + res.data[0].arrival.airport.iata + ") ");
+                    setMessage2("Return Flight: " + res.data[0].airline.name + " Airlines " + "Flight: " + 
+                    res.data[0].number + " departing at " + moment(res.data[0].departure.scheduledTimeLocal).format('MM-DD-YYYY h:mm a') + 
+                    " from " + res.data[0].departure.airport.municipalityName + 
+                    "(" + res.data[0].departure.airport.iata + ") " + " to " +
+                    " to " + res.data[0].arrival.airport.municipalityName + 
+                            "(" + res.data[0].arrival.airport.iata + ") ");
                 })
                 .catch (err => {
                     console.log(err);
                     setMessage1("Please Verify Flight Data");
+                    const timer = setTimeout(() => {
+                        setMessage1("")
+                        setConfirm(false);
+                    }, 3000 );
+                    return () => clearTimeout(timer);
                 })                
             })
             .catch (err => {
                 console.log(err);
                 setMessage1("Please Verify Flight Data");
+                const timer = setTimeout(() => {
+                    setMessage1("")
+                    setConfirm(false);
+                }, 3000 );
+                return () => clearTimeout(timer);
             })
     }    
 
@@ -88,16 +101,20 @@ function AddTrip () {
     function confirmData (e) {
         e.preventDefault();
         console.log("I'm in confirmData");
-        setConfirm(true);
         if (inputTrip.airlineCode && inputTrip.departureFlightNumber &&
             inputTrip.startDate && inputTrip.returnFlightNumber &&
             inputTrip.endDate) {
             
             handleFlightEntry();
+            setConfirm(true);
         } else {
             setMessage1("Please Verify Your Flight Data");
-        }
-
+            const timer = setTimeout(() => {
+                setMessage1("")
+                setConfirm(false);
+            }, 3000 );
+            return () => clearTimeout(timer);
+        };
     }
 
 
@@ -155,16 +172,22 @@ function AddTrip () {
         .then(res => {
             console.log(res.data._id);
             setCurrentTrip(res.data._id);
-            // setInputTrip({
-            //     tripName: "",
-            //     destination: ""
-            // });
         }) 
         .catch(err => console.log(err));
 
-        var frm = document.querySelector("#trip-form");
-        frm.submit();
-        frm.reset();
+    
+        setMessage1("Trip Information Saved Successfuly");
+        setMessage2("");
+        const timer = setTimeout(() => {
+            setMessage1("")
+            setConfirm(false);
+            var frm = document.querySelector("#trip-form");
+            frm.submit();
+            frm.reset();
+        }, 3000 );
+        return () => clearTimeout(timer);
+
+
  
     }
 
@@ -192,7 +215,7 @@ function AddTrip () {
                                 <select name="airlineCode" className="form-select" onChange={handleChange}>
                                     <option>Select Airline</option>
                                     {airlines.map(airline => {
-                                        return (<option value={airline.airlineCode}>{airline.airlineName}</option>
+                                        return (<option key={airline._id} value={airline.airlineCode}>{airline.airlineName}</option>
                                     )})}
                                 </select>
                             </div>  ) : <div>""</div> }
@@ -217,13 +240,13 @@ function AddTrip () {
                     </div>
                 </div>
                 <div className="row">
-                   <p className="lead">{(message1.length > 0) && message1}</p> 
-                   <p className="lead">{(message2.length > 0) && message2}</p> 
+                   {(message1.length > 0) && <div className="alert alert-primary" role="alert">{message1}</div> }
+                   {(message2.length > 0) && <div className="alert alert-primary" role="alert">{message2}</div> }
                 </div>
                 <div className="row">
                     <div className="text-center">
                         {confirm && 
-                        <button type="submit" className="btn btn-primary px-4">Submit</button>  
+                        <button type="submit" className="btn btn-success px-4">Submit</button>  
                         }
                         {!confirm &&
                         <button type="submit" className="btn btn-primary px-4">Confirm</button>                  

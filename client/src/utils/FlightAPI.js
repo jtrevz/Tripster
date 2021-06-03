@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const { REACT_APP_AERODATABOX_APIKEY } = process.env;
+
 
 export default {
     // Export an object with a "search" method that searches the Giphy API for the passed query
@@ -9,9 +11,10 @@ export default {
         apiUrl +=   airlineCode + flightNum + "/" + flightDate;      
         console.log("I'm in getFlightData");
         console.log(apiUrl);
+        console.log("api key = " + "862e3c95cemshd7b782fd1afee99p1cc2dajsn7749c4a6cd09");
 
         return axios.get(apiUrl, {
-        headers: {'x-rapidapi-key' : '862e3c95cemshd7b782fd1afee99p1cc2dajsn7749c4a6cd09',
+        headers: {'x-rapidapi-key' : "862e3c95cemshd7b782fd1afee99p1cc2dajsn7749c4a6cd09",
                     "x-rapidapi-host": "aerodatabox.p.rapidapi.com",
                 }
         })
