@@ -33,7 +33,7 @@ function App() {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/addtrip" component={AddTrip} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/itinerary" component={Itinerary} />
+              <Route path="/itinerary" component={Itinerary} />
               <PrivateRoute exact path = "/temp" component={Temp}/>
             </Switch>
           <Footer/>

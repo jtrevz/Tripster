@@ -30,7 +30,7 @@ export default {
     return axios.post("/api/trips", tripData);
   },
     // Saves a book to the database
-  updateTrip: function(tripData) {
-      return axios.put("/api/trips", tripData);
+  updateTrip: function(id, tripData) {
+      return axios.put(("/api/trips/" + id), tripData);
   }
 };
