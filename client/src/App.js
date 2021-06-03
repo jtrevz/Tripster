@@ -11,8 +11,9 @@ import Temp from "./components/Temp"
 import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
-import TripContext from "./contexts/TripContext"
+import TripContext from "./contexts/tripContext"
 import Itinerary from "./pages/Itinerary"
+import "./style.css"
 
 
 

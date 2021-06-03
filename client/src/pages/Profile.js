@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
 import API from '../utils/API'
-import Trip from '../components/Trip.js'
 
 function Profile(props) {
   const {currentUser} = useAuth()
