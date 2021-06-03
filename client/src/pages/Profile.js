@@ -30,12 +30,7 @@ function Profile(props) {
       <div>
       <main role="main" className="container">
       <div className="my-3 p-3 bg-white rounded box-shadow">
-<<<<<<< HEAD
-        <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
-        <div className="media text-muted pt-3">
-=======
     <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
->>>>>>> 71688d5a24a2d8b2314d361c7e1ebe3136fcce7c
         {currentUserTrips.length ? (
          currentUserTrips.map(trip => {
           return (
