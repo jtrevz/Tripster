@@ -88,7 +88,7 @@ The following technology was used to build note-taker:
 
 ## License
 
-None
+[MIT License](https://opensource.org/licenses/MIT)
 
 ---
 
