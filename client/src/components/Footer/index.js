@@ -7,7 +7,6 @@ function Footer(props) {
 
       <div>
           <footer className="text-center text-white mt-5" id="contact-me">
-        <h1 className="display-3 projects text-blue">Contact Me</h1>
         <div className="container pt-4">
             <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
