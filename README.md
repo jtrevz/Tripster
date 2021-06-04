@@ -64,7 +64,11 @@ from the command line.
 
 The following technology was used to build note-taker:
 
+  * [AeroDataBox](https://www.aerodatabox.com/)
+
   * [express.js](https://www.npmjs.com/package/express)
+
+  * [Firebase](https://firebase.google.com/)
 
   * [jsPDF](https://www.npmjs.com/package/jspdf)
 
@@ -77,6 +81,7 @@ The following technology was used to build note-taker:
   * [react.js](https://www.npmjs.com/package/react)
 
   * [BootStrap v4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+
 
 ---
 
