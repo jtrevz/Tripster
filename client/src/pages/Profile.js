@@ -40,7 +40,7 @@ function Profile(props) {
             <strong className="d-block text-gray-dark">
              <h4>{trip.tripName}</h4>
               </strong>
-            <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
+            <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate} - {trip.endDate})</strong>
             </button>
           </div>
           </div>)
