@@ -1,11 +1,5 @@
 import React, {useState} from "react";
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
 import "./style.css";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../../contexts/authContext'
 import 'bootstrap';
@@ -56,7 +50,7 @@ function NavBar() {
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-color btn-primary"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/trip-planner">New Trip</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/addtrip">New Trip</Link></button></a>
         </div>
       </div>
 </nav>

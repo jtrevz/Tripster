@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
 import {useHistory} from 'react-router-dom'
 import API from '../utils/API'
+import NavBar from "../components/Navbar"
 
 
 function Profile(props) {
@@ -28,6 +29,7 @@ function Profile(props) {
 
     return (
       <div>
+        <NavBar/>
       <main role="main" className="container">
       <div className="my-3 p-3 bg-white rounded box-shadow">
     <h6 className="border-bottom border-gray pb-2 mb-0"></h6>

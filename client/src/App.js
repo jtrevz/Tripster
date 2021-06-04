@@ -25,7 +25,6 @@ function App() {
         <div>
         <AuthProvider>
           <TripContext.Provider>
-          <NavBar/>
             <Switch>
               <Route exact path="/" component={SplashPage} />
               <Route exact path="/login" component={Login} />

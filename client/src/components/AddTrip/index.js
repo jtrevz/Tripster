@@ -5,6 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../../contexts/authContext'
 import API from '../../utils/API';
 import FlightAPI from "../../utils/FlightAPI";
+import NavBar from "../Navbar"
 // import FlightData from "./FlightData";
 
 
@@ -193,6 +194,7 @@ function AddTrip () {
 
     return ( 
        <div>
+           <NavBar/>
            <div className="container mt-5">
            <form id="trip-form" onSubmit={confirm ? handleSubmit : confirmData }>
                 <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
