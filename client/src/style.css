@@ -10,13 +10,13 @@ header{
     transition: 1.5s !important;
     background-size: 200% auto;
     color: white !important;
-    box-shadow: 0 0 20px #eee;
     background-image: linear-gradient(to right, #61107f9d 0%, #da0b34 51%, #62107f 100%);
     border-style: none !important;
    }
 
    .btn-color:hover {
     background-position: right center !important; 
+    box-shadow: 0 0 20px #eee;
   }
 
   .projectcard {
@@ -36,5 +36,19 @@ header{
     text-decoration: none;
     color: red;
   }
+
+  .fade {
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
   

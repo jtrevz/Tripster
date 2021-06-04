@@ -4,7 +4,7 @@ import NavBar from "../components/Navbar"
 
 function SplashPage(props) {
     return (
-        <div>
+        <div class="fade">
             <NavBar/>
             {/* <button type="button" className="btn btn-light"><Link to="/login">Login</Link></button>
             <button type="button" className="btn btn-light"><Link to="/signup">Signup</Link></button>
@@ -12,12 +12,11 @@ function SplashPage(props) {
             <button type="button" className="btn btn-light"><Link to="/trip-planner">Trip Planner</Link></button>
             <button type="button" className="btn btn-light"><Link to="/profile">Profile</Link></button> */}
 
-            <div className="jumbotron">
-                <h1 className="display-4">Hello, Placeholder!</h1>
+            <div className="jumbotron btn-color">
+                <h1 className="display-4"><img src="./images/logo-white.png" width="80" height="80" className="d-inline-block mb-2 mr-1" alt=""/>Hello, Traveler!</h1>
                 <p className="lead">This is a simple placeholder unit, a simple placeholdy-style component for calling extra attention to placeholder content or placeholders.</p>
                 <hr className="my-4"/>
-                <a className="btn btn-primary btn-color btn-lg mr-4" href="#" role="button"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/login">Login</Link></a>
-                <a className="btn btn-primary btn-color btn-lg" href="#" role="button"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/signup">Signup</Link></a>
+                <a className="btn btn-primary btn-color btn-lg" href="#" role="button"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/signup">Get Started</Link></a>
             </div>
 
             <div id="project">

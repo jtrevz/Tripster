@@ -30,7 +30,7 @@ function Profile(props) {
     return (
       <div>
         <NavBar/>
-      <main role="main" className="container">
+      <main role="main" className="container fade">
       <div className="my-3 p-3 bg-white rounded box-shadow">
     <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
         {currentUserTrips.length ? (

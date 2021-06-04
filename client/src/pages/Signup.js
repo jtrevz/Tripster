@@ -49,7 +49,7 @@ function Signup() {
 
   return (
     <div>
-    <div className="text-center mt-5 container">
+    <div className="text-center mt-5 container fade">
       <div className="form-signin justify-content-center">
 <form onSubmit={handleSubmit} className=" col-xs-6 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
 <Link to="/"><img className="mb-4" src="./images/Logo.png" alt="" width="120" height="120" /></Link>

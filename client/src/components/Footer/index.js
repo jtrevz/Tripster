@@ -6,7 +6,7 @@ function Footer(props) {
     return (
 
       <div>
-          <footer className="text-center text-white mt-5" id="contact-me">
+          <footer className="text-center text-white mt-5 fade" id="contact-me">
         <div className="container pt-4">
             {/* <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"

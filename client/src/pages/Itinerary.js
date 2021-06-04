@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"; 
 import API from '../utils/API'
+import NavBar from '../components/Navbar'
 
 function Itinerary() {
     const [currentTrip, setCurrentTrip] = useState({});
@@ -37,7 +38,8 @@ function Itinerary() {
 
     return (
         <div>
-           <div className="container mt-5">
+            <NavBar/>
+           <div className="container mt-5 fade">
     <form onSubmit={handleSubmit}>
         {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
                 <div className="mb-3">
@@ -60,7 +62,7 @@ function Itinerary() {
                     <input onChange={handleChange} name="notes" type="text" className="form-control" placeholder="e.g. Reservations under John Smith, dress code enforced" />
                     <div id="destinationHelp" className="form-text"></div>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>  
+                <button type="submit" className="btn btn-primary btn-color">Submit</button>  
             </form>
            </div>
        </div>
