@@ -1,6 +1,6 @@
 # Tripster
 
-![Screenshot](./client/public/images/logo150x150.png "Screenshot")
+![Tripster](./client/public/images/logo150x150.png)
 
 ## Description
 
