@@ -1,6 +1,6 @@
 # Tripster
 
-![Tripster](./client/public/images/logo150x150.png)
+![Tripster](./client/public/images/Logo150x150.png)
 
 ## Description
 
