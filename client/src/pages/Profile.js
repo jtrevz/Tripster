@@ -40,12 +40,12 @@ function Profile(props) {
             <strong className="d-block text-gray-dark">
              <h4>{trip.tripName}</h4>
               </strong>
-            <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
+            <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate}</strong>
             </button>
           </div>
           </div>)
-         })
-        ) : (<h3>No Trips Available</h3>) 
+        })
+          ) : (<h3>No Trips Available</h3>) 
         } 
         <h6 className="d-block mt-3">
           <a href="#">+ Add Trip</a>

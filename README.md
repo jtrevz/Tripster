@@ -10,7 +10,7 @@ While there are many travel websites that address different aspects of a travele
 
 ## Deployed Application
 
-### https://tobedetermined.com
+### https://tripster2021.herokuapp.com/
 
 ---
 
