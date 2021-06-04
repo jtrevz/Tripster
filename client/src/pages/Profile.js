@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import API from '../utils/API'
 import NavBar from "../components/Navbar"
 
@@ -36,13 +36,13 @@ function Profile(props) {
         {currentUserTrips.length ? (
          currentUserTrips.map(trip => {
           return (
-            <div className="media text-muted pt-3">
-          <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <button onClick={handleSubmit} value={trip._id}>
+            <div className="media text-muted pt-3 justify-content-center">
+          <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray justify-content-center">
+          <button className="shadow trip-btn rounded" style={{ color: 'primary', textDecoration: 'none',}} onClick={handleSubmit} value={trip._id}>
             <strong className="d-block text-gray-dark">
-             <h4>{trip.tripName}</h4>
+             <h4 className="display-6">{trip.tripName}</h4>
               </strong>
-            <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
+            <strong className="lead d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
             </button>
           </div>
           </div>)
@@ -50,7 +50,7 @@ function Profile(props) {
         ) : (<h3>No Trips Available</h3>) 
         } 
         <h6 className="d-block mt-3">
-          <a href="#">+ Add Trip</a>
+        <Link style={{ color: 'primary', textDecoration: 'none' }} to="/addtrip">+  Add Trip</Link>
         </h6>
       </div>
     </main>
