@@ -63,7 +63,7 @@ function Login() {
       <input type="password" ref={passwordRef} required className="form-control" id="floatingPassword" placeholder="Password"/>
       <label htmlFor="floatingPassword">Password</label>
     </div>
-    <small className="text-muted">If you dont have an account click <Link style={{ color: '#fff', textDecoration: 'none' }} to="/signup">here</Link>.</small>
+    <small className="text-muted">If you dont have an account click <Link style={{ color: 'primary', textDecoration: 'none' }} to="/signup">here</Link>.</small>
 
     <button disabled={loading} className="mt-2 w-100 btn-color btn btn-lg btn-primary" type="submit">Sign in</button>
     <p className="mt-5 mb-3 text-muted">© 2021</p>
