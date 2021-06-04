@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import API from '../utils/API'
 import NavBar from '../components/Navbar'
 
+
 function Itinerary() {
     const [currentTrip, setCurrentTrip] = useState({});
     const [event, setEvent] = useState();

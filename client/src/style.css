@@ -51,4 +51,11 @@ header{
     }
 }
 
+.bg-img{
+  transition: all 1s;
+}
+.bg-img:hover {
+  transform: scale(1.1);
+}
+
   

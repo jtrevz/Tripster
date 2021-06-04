@@ -6,6 +6,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import "./style.css"
+import logo from '../../logo.png'
 
 
 
@@ -27,7 +28,7 @@ function NavBar() {
   <div>
 <nav className="navbar-collapse navbar-light bg-light fade">
 <div className="pt-3">
-<h2 className="text-center display-6"><img src="./images/Logo.png" width="50" height="50" className="d-inline-block mb-2 mr-1" alt=""/><Link style={{ color: '#000', textDecoration: 'none' }} to="/">Tripster</Link></h2>      
+<h2 className="text-center display-6"><img src={logo} width="50" height="50" className="d-inline-block mb-2 mr-1" alt=""/><Link style={{ color: '#000', textDecoration: 'none' }} to="/">Tripster</Link></h2>      
 </div>
 <div className="text-center text-white" id="contact-me">
         <div className="container">
