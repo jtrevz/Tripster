@@ -49,10 +49,10 @@ function Signup() {
 
   return (
     <div>
-    <div className="text-center mt-5 container">
+    <div className="text-center mt-5 container fade">
       <div className="form-signin justify-content-center">
 <form onSubmit={handleSubmit} className=" col-xs-6 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-<img className="mb-4" src="./images/Logo.png" alt="" width="120" height="120"/>
+<Link to="/"><img className="mb-4" src="./images/Logo.png" alt="" width="120" height="120" /></Link>
 <h1 className="h3 mb-3 fw-normal">Please Sign Up</h1>
 {error && <Alert variant= "danger">{error}</Alert>}
 
@@ -68,9 +68,9 @@ function Signup() {
   <input ref={passwordConfirmRef} required type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
   <label htmlFor="floatingPassword">Re-enter Password</label>
 </div>
-<small className="text-muted">If you already have an account click <Link to="/login">here</Link>.</small>
+<small className="text-muted">If you already have an account click <Link style={{ color: 'primary', textDecoration: 'none' }} to="/login">here</Link>.</small>
 
-<button disabled={loading} className="color-btn mt-2 w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+<button disabled={loading} className="btn-color mt-2 w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 <p className="mt-5 mb-3 text-muted">© 2021</p>
 </form>
 </div>

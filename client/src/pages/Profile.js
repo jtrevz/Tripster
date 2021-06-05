@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {useAuth} from '../contexts/authContext'
 import {useHistory} from 'react-router-dom'
 import API from '../utils/API'
+import NavBar from "../components/Navbar"
+
 
 function Profile(props) {
   const {currentUser} = useAuth()
@@ -16,8 +18,7 @@ function Profile(props) {
       setCurrentUserTrips(trips.data)
       console.log(currentUserTrips)
     })
-  },[] 
-  )
+  },[] )
 
   async function handleSubmit(e)  {
     e.preventDefault()
@@ -28,7 +29,8 @@ function Profile(props) {
 
     return (
       <div>
-      <main role="main" className="container">
+        <NavBar/>
+      <main role="main" className="container fade">
       <div className="my-3 p-3 bg-white rounded box-shadow">
     <h6 className="border-bottom border-gray pb-2 mb-0"></h6>
         {currentUserTrips.length ? (

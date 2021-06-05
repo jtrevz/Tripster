@@ -1,17 +1,61 @@
 /* body {
     background-color: #62107f;
 } */
+header{
+    background-color:blue;
+}
 
-.btn {
+.btn-color {
     text-transform: uppercase;
-    transition: 1.5s;
+    transition: 1.5s !important;
     background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
+    color: white !important;
     background-image: linear-gradient(to right, #61107f9d 0%, #da0b34 51%, #62107f 100%);
-    border-style: none;
+    border-style: none !important;
    }
 
-   .btn:hover {
+   .btn-color:hover {
     background-position: right center !important; 
+    box-shadow: 0 0 20px #eee;
   }
+
+  .projectcard {
+    background-size: cover; /* or contain depending on what you want */
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align:center;
+    margin:auto;
+    padding:0;
+  }
+
+  .textshadow {
+    text-shadow: 1px 2px 5px black;
+  }
+
+  Link {
+    text-decoration: none;
+    color: red;
+  }
+
+  .fade {
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bg-img{
+  transition: all 1s;
+}
+.bg-img:hover {
+  transform: scale(1.1);
+}
+
+  

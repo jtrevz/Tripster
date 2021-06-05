@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
 import Itinerary from "./pages/Itinerary"
+import "./style.css"
 
 
 
@@ -22,7 +23,6 @@ function App() {
       <Router>
         <div>
         <AuthProvider>
-          <NavBar/>
             <Switch>
               <Route exact path="/" component={SplashPage} />
               <Route exact path="/login" component={Login} />

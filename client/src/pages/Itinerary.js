@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react"; 
 import API from '../utils/API'
 import './itinerary.css'
+import NavBar from '../components/Navbar'
+
 
 function Itinerary() {
     const [currentTrip, setCurrentTrip] = useState();
@@ -53,6 +55,8 @@ function Itinerary() {
 
     return (
         <div>
+        <NavBar/>
+           <div className="container mt-5 fade"></div> 
             {days && (days.map(day => {
                 return(
                     <p>{day}</p>
@@ -80,7 +84,6 @@ function Itinerary() {
             </div>
            <div className="container mt-5">
            <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
-
     <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Event</label>
@@ -102,7 +105,7 @@ function Itinerary() {
                     <input onChange={handleChange} name="notes" type="text" className="form-control" placeholder="e.g. Reservations under John Smith, dress code enforced" />
                     <div id="destinationHelp" className="form-text"></div>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>  
+                <button type="submit" className="btn btn-primary btn-color">Submit</button>  
             </form>
            </div>
        </div>
