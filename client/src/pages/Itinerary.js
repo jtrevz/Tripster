@@ -1,9 +1,22 @@
 import React, {useState, useEffect} from "react"; 
 import API from '../utils/API'
+import './itinerary.css'
 
 function Itinerary() {
-    const [currentTrip, setCurrentTrip] = useState({});
+    const [currentTrip, setCurrentTrip] = useState();
     const [event, setEvent] = useState();
+    const [days, setDays]= useState();
+
+    function getDateArray (start, end) {
+    var arr = new Array();
+    var dt = new Date(start);
+    while (dt <= end) {
+        arr.push(new Date(dt));
+        dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
+}
+
     var temp = (window.location.pathname).split('/')
     
     useEffect(() => {
@@ -12,8 +25,11 @@ function Itinerary() {
         .then(trip => {
             setCurrentTrip(trip.data)
             console.log(trip.data)
+            var dateArr = getDateArray(trip.startDate, trip.endDate)
+             
+            console.log(dateArr);
+            setDays(dateArr)
         })
-        console.log(currentTrip)
     },[])
 
     function handleChange(e) {
@@ -37,9 +53,35 @@ function Itinerary() {
 
     return (
         <div>
+            {days && (days.map(day => {
+                return(
+                    <p>{day}</p>
+                )
+            }))}
+            {days && (<p>{days}</p>)}
+            <div className="container mt-5">
+           {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
+           <ul className="eventList">
+                {currentTrip && (
+                currentTrip.events.map(event =>{
+                    return(
+                       <div>
+                           
+                        <li className="eventBullet" key={event._id}>
+                            <div className="eventName">{event.eventName}</div>
+                            <p className="eventDate">{event.eventDate}</p>
+                            <p className="eventTime">{event.time}</p>
+                            <p className="eventNotes">{event.notes}</p>
+                        </li>
+                        </div> 
+                    )
+                }))} 
+            </ul> 
+            </div>
            <div className="container mt-5">
+           <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
+
     <form onSubmit={handleSubmit}>
-        {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
                 <div className="mb-3">
                     <label className="form-label">Event</label>
                     <input onChange={handleChange} name="eventName" type="city" className="form-control" placeholder="" />
