@@ -16,7 +16,7 @@ While there are many travel websites that address different aspects of a travele
 
 ## GitHub Repository
 
-### [Tripster](https://github.com/jtrevz/project3)
+### [Tripster](https://github.com/jtrevz/Tripster)
 
 
 ---

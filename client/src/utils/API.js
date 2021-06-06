@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   // Gets all airlines
   getAirlines: function() {
-    console.log("I'm in API.js.getAirlines")
+    // console.log("I'm in API.js.getAirlines")
     return axios.get("/api/airlines");
   },
   // Gets the airline with the given id
@@ -13,8 +13,8 @@ export default {
    // Gets all trips for a given user
    // ------> This needs work <------
   getTrips: function(userData) {
-    console.log("in API.js");
-    console.log(userData);
+    // console.log("in API.js");
+    // console.log(userData);
     return axios.post("/api/trips/" + userData);
   },
   // Gets the trip with the given id
