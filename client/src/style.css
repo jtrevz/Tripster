@@ -58,4 +58,12 @@ header{
   transform: scale(1.1);
 }
 
+.trip-btn {
+  border-style: none !important;
+  transition: all 1s;
+}
+
+.trip-btn:hover{
+  transform: scale(1.1);
+}
   
