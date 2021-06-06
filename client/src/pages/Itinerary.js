@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import API from '../utils/API'
 import './itinerary.css'
 import NavBar from '../components/Navbar'
+import moment from 'moment';
 
 
 function Itinerary() {
@@ -9,15 +10,6 @@ function Itinerary() {
     const [event, setEvent] = useState();
     const [days, setDays]= useState();
 
-    function getDateArray (start, end) {
-    var arr = new Array();
-    var dt = new Date(start);
-    while (dt <= end) {
-        arr.push(new Date(dt));
-        dt.setDate(dt.getDate() + 1);
-    }
-    return arr;
-}
 
     var temp = (window.location.pathname).split('/')
     
@@ -27,10 +19,9 @@ function Itinerary() {
         .then(trip => {
             setCurrentTrip(trip.data)
             console.log(trip.data)
-            var dateArr = getDateArray(trip.startDate, trip.endDate)
+            // var dateArr = getDateArray(trip.startDate, trip.endDate)
              
-            console.log(dateArr);
-            setDays(dateArr)
+    
         })
     },[])
 
@@ -71,9 +62,9 @@ function Itinerary() {
                     return(
                        <div>
                            
-                        <li className="eventBullet" key={event._id}>
+                        <li style={{margin:"none"}} className="eventBullet" key={event._id}>
                             <div className="eventName">{event.eventName}</div>
-                            <p className="eventDate">{event.eventDate}</p>
+                            <p className="eventDate">{moment(event.eventDate).format('dddd, MMMM Do')}</p>
                             <p className="eventTime">{event.time}</p>
                             <p className="eventNotes">{event.notes}</p>
                         </li>

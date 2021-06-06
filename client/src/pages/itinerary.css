@@ -11,17 +11,26 @@
 
 ul.eventList li {
     padding-left: 33px;
-    margin-bottom: 2.5em;
     list-style: none;
     background: url("./geo-alt (1).svg") no-repeat;
-    border-left: 4px solid pink;
 }
 
 .eventName {
     font-size: 1.2857em; /* 18/16 -> 18px */
     font-weight: 300;
     display: inline;
-    margin-right: 0.5em;
+    margin: none;
+}
+
+p.eventDate{
+    margin: none;
+    font: bold;
+}
+.eventTime{
+    margin: none;
+}
+.eventNotes {
+    margin: none;
 }
 
 li p {
@@ -35,3 +44,5 @@ li p {
     background: url("./geo-alt (1).svg") no-repeat;
     border-left: none;
 } */
+
+
