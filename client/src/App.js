@@ -28,10 +28,10 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/addtrip" component={AddTrip} />
+              <PrivateRoute exact path="/addtrip" component={AddTrip} />
               <Route exact path="/profile" component={Profile} />
               <Route path="/itinerary" component={Itinerary} />
-              <PrivateRoute exact path = "/temp" component={Temp}/>
+              {/* <PrivateRoute exact path = "/temp" component={Temp}/> */}
             </Switch>
           <Footer/>
           </AuthProvider>
