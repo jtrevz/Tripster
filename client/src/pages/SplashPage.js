@@ -29,7 +29,7 @@ function SplashPage(props) {
                 <ul className="d-flex list-unstyled mt-auto">
                   <li className="d-flex align-items-center me-3">
                     <svg className="bi me-2" width="1em" height="1em"></svg>
-                    <small className="textshadow">Easily track flights with real time data.</small>
+                    <small className="textshadow lead">Easily track flights with real time data.</small>
                   </li>
                 </ul>
               </div>
@@ -43,7 +43,7 @@ function SplashPage(props) {
                 <ul className="d-flex list-unstyled mt-auto">
                   <li className="d-flex align-items-center me-3">
                     <svg className="bi me-2" width="1em" height="1em"></svg>
-                    <small className="textshadow">Create a packing list to easily keep track of your items.</small>
+                    <small className="lead textshadow">Create a packing list to easily keep track of your items.</small>
                   </li>
                 </ul>
               </div>
@@ -57,7 +57,7 @@ function SplashPage(props) {
                 <ul className="d-flex list-unstyled mt-auto">
                   <li className="d-flex align-items-center me-3">
                     <svg className="bi me-2" width="1em" height="1em"></svg>
-                    <small className="textshadow">Keep track of your trip with a customizable itinerary.</small>
+                    <small className="lead textshadow">Keep track of your trip with a customizable itinerary.</small>
                   </li>
                 </ul>
               </div>
