@@ -1,17 +1,12 @@
 import React, {useState} from "react";
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Nav from 'react-bootstrap/Nav';
 import "./style.css";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from '../../contexts/authContext'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import "./style.css"
+import logo from '../../logo.png'
 
 
 
@@ -31,9 +26,9 @@ function NavBar() {
 
   return (
   <div>
-<nav className="navbar-collapse navbar-light bg-light">
-<div className="p-3">
-<h2 className="text-center display-6"><img src="./images/Logo.png" width="50" height="50" className="d-inline-block mb-2 mr-1" alt=""/><Link style={{ color: '#000', textDecoration: 'none' }} to="/">Tripster</Link></h2>      
+<nav className="navbar-collapse navbar-light bg-light fade">
+<div className="pt-3">
+<h2 className="text-center display-6"><img src={logo} width="50" height="50" className="d-inline-block mb-2 mr-1" alt=""/><Link style={{ color: '#000', textDecoration: 'none' }} to="/">Tripster</Link></h2>      
 </div>
 <div className="text-center text-white" id="contact-me">
         <div className="container">
@@ -56,7 +51,7 @@ function NavBar() {
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
               role="button"
               data-mdb-ripple-color="dark"
-              ><button type="button" className="btn btn-color btn-primary"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/trip-planner">New Trip</Link></button></a>
+              ><button type="button" className="btn btn-color btn-primary"><Link style={{ color: '#fff', textDecoration: 'none' }} to="/addtrip">New Trip</Link></button></a>
         </div>
       </div>
 </nav>
