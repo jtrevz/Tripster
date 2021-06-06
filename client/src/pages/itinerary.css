@@ -20,21 +20,26 @@ ul.eventList li {
     font-weight: 300;
     display: inline;
     margin: none;
+    padding: none;
 }
 
 p.eventDate{
     margin: none;
     font: bold;
+    padding: none;
 }
 .eventTime{
     margin: none;
+     padding: none;
 }
 .eventNotes {
+ padding: none;
     margin: none;
 }
 
 li p {
     margin: none;
+    padding: none;
 }
 
 /* ul.eventList li:last-child {
