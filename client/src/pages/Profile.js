@@ -4,7 +4,7 @@ import {Link, useHistory} from 'react-router-dom'
 import API from '../utils/API'
 import FlightAPI from "../utils/FlightAPI";
 import jsPDF from 'jspdf'
-import logo from './logo.png';
+import logo from './Logo.png';
 import NavBar from "../components/Navbar";
 import moment from 'moment';
 
