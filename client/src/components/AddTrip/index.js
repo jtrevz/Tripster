@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { set } from 'mongoose';
 import React, {useRef, useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert';
 import { useAuth } from '../../contexts/authContext'
 import API from '../../utils/API';
@@ -18,6 +19,7 @@ function AddTrip () {
     const [confirm, setConfirm] = useState(false);
     const [message1, setMessage1] = useState("");
     const [message2, setMessage2] = useState("");
+    const history= useHistory();
 
     useEffect(() => {
         loadAirlines();
@@ -182,9 +184,7 @@ function AddTrip () {
         const timer = setTimeout(() => {
             setMessage1("")
             setConfirm(false);
-            var frm = document.querySelector("#trip-form");
-            frm.submit();
-            frm.reset();
+            history.push('/profile')
         }, 3000 );
         return () => clearTimeout(timer);
 

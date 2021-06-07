@@ -7,11 +7,9 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import SplashPage from "./pages/SplashPage"
 import { AuthProvider } from "./contexts/authContext"
-import Temp from "./components/Temp"
 import PrivateRoute from "./components/PrivateRoute"
 import Profile from "./pages/Profile"
 import AddTrip from "./components/AddTrip"
-import TripContext from "./contexts/tripContext"
 import Itinerary from "./pages/Itinerary"
 import "./style.css"
 
@@ -24,19 +22,16 @@ function App() {
       <Router>
         <div>
         <AuthProvider>
-          <TripContext.Provider>
             <Switch>
               <Route exact path="/" component={SplashPage} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/addtrip" component={AddTrip} />
-              <Route exact path="/profile" component={Profile} />
-              <Route path="/itinerary" component={Itinerary} />
-              <PrivateRoute exact path = "/temp" component={Temp}/>
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/addtrip" component={AddTrip} />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute path="/itinerary" component={Itinerary} />
             </Switch>
           <Footer/>
-          </TripContext.Provider>
           </AuthProvider>
         </div>
       </Router>

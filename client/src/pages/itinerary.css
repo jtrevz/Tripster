@@ -1,0 +1,53 @@
+/* .eventList {
+    padding-left: 15px; 
+} */
+
+/* .eventBullet {
+    padding-left: 25px;
+    margin-bottom: 2.5em;
+    list-style: none;
+    background: url("./geo-alt (1).svg") no-repeat;
+} */
+
+ul.eventList li {
+    padding-left: 33px;
+    list-style: none;
+    background: url("./geo-alt (1).svg") no-repeat;
+}
+
+.eventName {
+    font-size: 1.2857em; /* 18/16 -> 18px */
+    font-weight: 300;
+    display: inline;
+    margin: none;
+    padding: none;
+}
+
+p.eventDate{
+    margin: none;
+    font: bold;
+    padding: none;
+}
+.eventTime{
+    margin: none;
+     padding: none;
+}
+.eventNotes {
+ padding: none;
+    margin: none;
+}
+
+li p {
+    margin: none;
+    padding: none;
+}
+
+/* ul.eventList li:last-child {
+    padding-left: 33px;
+    margin-bottom: 2.5em;
+    list-style: none;
+    background: url("./geo-alt (1).svg") no-repeat;
+    border-left: none;
+} */
+
+

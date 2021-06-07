@@ -1,11 +1,19 @@
 import React, {useState, useEffect} from "react"; 
 import API from '../utils/API'
+import './itinerary.css'
 import NavBar from '../components/Navbar'
+import moment from 'moment';
+import Alert from 'react-bootstrap/Alert';
+import {useHistory} from 'react-router-dom'
 
 
 function Itinerary() {
-    const [currentTrip, setCurrentTrip] = useState({});
+    const [currentTrip, setCurrentTrip] = useState();
     const [event, setEvent] = useState();
+    const [days, setDays]= useState();
+    const history = useHistory()
+
+
     var temp = (window.location.pathname).split('/')
     
     useEffect(() => {
@@ -14,8 +22,10 @@ function Itinerary() {
         .then(trip => {
             setCurrentTrip(trip.data)
             console.log(trip.data)
+            // var dateArr = getDateArray(trip.startDate, trip.endDate)
+             
+    
         })
-        console.log(currentTrip)
     },[])
 
     function handleChange(e) {
@@ -33,16 +43,44 @@ function Itinerary() {
         console.log(temp[2])
         API.updateTrip(temp[2], event)
         .then(updatedTrip => {
-            setCurrentTrip(updatedTrip)
+            var frm = document.querySelector("#itineraryForm");
+            frm.submit();
+            frm.reset();
         })
     }
 
     return (
         <div>
-            <NavBar/>
-           <div className="container mt-5 fade">
-    <form onSubmit={handleSubmit}>
-        {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
+        <NavBar/>
+           <div className="container mt-5 fade"></div> 
+            {days && (days.map(day => {
+                return(
+                    <p>{day}</p>
+                )
+            }))}
+            {days && (<p>{days}</p>)}
+            <div className="container mt-5">
+           {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
+           <ul className="eventList">
+                {currentTrip ? (currentTrip && (
+                currentTrip.events.map(event =>{
+                    return(
+                       <div>
+                           
+                        <li style={{margin:"none"}} className="eventBullet" key={event._id}>
+                            <div className="eventName">{event.eventName}</div>
+                            <p className="eventDate">{moment(event.eventDate).format('dddd, MMMM Do')}</p>
+                            <p className="eventTime">{event.time}</p>
+                            <p className="eventNotes">{event.notes}</p>
+                        </li>
+                        </div> 
+                    )
+                }))) : <Alert variant= "primary">Rendering Trip Information</Alert>} 
+            </ul> 
+            </div>
+           <div className="container mt-5">
+           <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
+    <form onSubmit={handleSubmit} id="itineraryForm">
                 <div className="mb-3">
                     <label className="form-label">Event</label>
                     <input onChange={handleChange} name="eventName" type="city" className="form-control" placeholder="" />

@@ -27,7 +27,7 @@ function Footer(props) {
               </svg> Placeholder</a> */}
             <a
               className="btn btn-link btn-floating btn-lg text-secondary m-1"
-              href="https://github.com/jtrevz/project3"
+              href="https://github.com/jtrevz/Tripster"
               role="button"
               data-mdb-ripple-color="dark"
               target="_blank"
