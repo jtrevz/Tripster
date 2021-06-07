@@ -16,31 +16,23 @@ const generatePDF = async (trip) => {
 
     var doc =  new jsPDF();
     doc.setFontSize(18);
-    doc.text(32, 20, 'Tripster');
+    doc.text(37, 20, 'Tripster');
     doc.addImage(logo, 'PNG', 20, 10, 15, 15, 'NONE', 0);
 
     doc.setFontSize(15);
     doc.text(80,30,`${trip.tripName}`)
-    doc.setFontSize(15);
-    doc.text(75, 35, `${(moment(trip.startDate).format('MMMM Do'))}- ${moment(trip.endDate).format('Do YYYY')}`)
+    doc.setFontSize(12);
+    doc.text(83, 35, `${(moment(trip.startDate).format('MMMM Do'))}- ${moment(trip.endDate).format('Do YYYY')}`)
   
-    doc.text(20,45, `Flight Information:`)
+    doc.text(20,48, `Flight Information:`)
     
     doc.setFontSize(12);
-    doc.text(20, 45, `Depart: ${airPortName.data[0].departure.airport.name} @ ${airPortName.data[0].departure.scheduledTimeLocal}`);
-    doc.text(20, 50, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}`);
-    doc.text(20, 55, `Return: ${airPortReturn.data[0].departure.airport.name} @ ${airPortReturn.data[0].departure.scheduledTimeLocal}`);
-    doc.text(20, 60, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
+    doc.text(20, 55, `Depart: ${airPortName.data[0].departure.airport.name} @ ${moment(airPortName.data[0].departure.scheduledTimeLocal).format('h :m A')}`);
+    doc.text(20, 60, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}}`);
+    doc.text(20, 65, `Return: ${airPortReturn.data[0].departure.airport.name} @ ${moment(airPortReturn.data[0].departure.scheduledTimeLocal).format('h:m A')}`);
+    doc.text(20, 70, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
 
-
-    doc.text(20, 90, `Departing Flight: ${airPortName.data[0].airline.name} Airlines Flight: ${airPortName.data[0].number} departing at ${airPortName.data[0].departure.scheduledTimeLocal} from ${airPortName.data[0].departure.airport.municipalityName}(${airPortName.data[0].departure.airport.iata}) to ${airPortName.data[0].arrival.airport.municipalityName} (${airPortName.data[0].arrival.airport.iata})`);
-
-
-   
-    doc.text(20, 120, `airlineCode: ${trip.airlineCode}`);
-    doc.text(20, 125, `departureFlightNumber: ${trip.departureFlightNumber}`);
-    doc.text(20, 130, `returnFlightNumber: ${trip.returnFlightNumber}`);
-  
+    
     doc.save(`${trip.tripName}.pdf`)
 
   } catch (error) {
