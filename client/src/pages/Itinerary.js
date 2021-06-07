@@ -3,12 +3,15 @@ import API from '../utils/API'
 import './itinerary.css'
 import NavBar from '../components/Navbar'
 import moment from 'moment';
+import Alert from 'react-bootstrap/Alert';
+import {useHistory} from 'react-router-dom'
 
 
 function Itinerary() {
     const [currentTrip, setCurrentTrip] = useState();
     const [event, setEvent] = useState();
     const [days, setDays]= useState();
+    const history = useHistory()
 
 
     var temp = (window.location.pathname).split('/')
@@ -40,7 +43,9 @@ function Itinerary() {
         console.log(temp[2])
         API.updateTrip(temp[2], event)
         .then(updatedTrip => {
-            setCurrentTrip(updatedTrip)
+            var frm = document.querySelector("#itineraryForm");
+            frm.submit();
+            frm.reset();
         })
     }
 
@@ -57,7 +62,7 @@ function Itinerary() {
             <div className="container mt-5">
            {currentTrip && <h1 className="h3 mb-3 fw-normal">{currentTrip.tripName}</h1>}
            <ul className="eventList">
-                {currentTrip && (
+                {currentTrip ? (currentTrip && (
                 currentTrip.events.map(event =>{
                     return(
                        <div>
@@ -70,12 +75,12 @@ function Itinerary() {
                         </li>
                         </div> 
                     )
-                }))} 
+                }))) : <Alert variant= "primary">Rendering Trip Information</Alert>} 
             </ul> 
             </div>
            <div className="container mt-5">
            <h1 className="h3 mb-3 fw-normal">Add Trip</h1>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} id="itineraryForm">
                 <div className="mb-3">
                     <label className="form-label">Event</label>
                     <input onChange={handleChange} name="eventName" type="city" className="form-control" placeholder="" />
