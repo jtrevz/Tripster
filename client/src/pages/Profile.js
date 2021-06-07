@@ -7,7 +7,6 @@ import jsPDF from 'jspdf'
 import logo from './logo.png';
 import NavBar from "../components/Navbar";
 import moment from 'moment';
-import inlineLogo from './small_b_logo.jpg'
 
 const generatePDF = async (trip) => {
   
@@ -17,25 +16,27 @@ const generatePDF = async (trip) => {
 
     var doc =  new jsPDF();
     doc.setFontSize(18);
-    doc.text(88, 8, 'Tripster');
-    doc.line(20, 20, 80, 20);
-    doc.addImage(logo, 'JPEG', 88, 10, 40, 20, 'NONE', 0);
-    doc.line(130, 20, 190, 20);
+    doc.text(32, 20, 'Tripster');
+    doc.addImage(logo, 'PNG', 20, 10, 15, 15, 'NONE', 0);
+
+    doc.setFontSize(15);
+    doc.text(80,30,`${trip.tripName}`)
+    doc.setFontSize(15);
+    doc.text(75, 35, `${(moment(trip.startDate).format('MMMM Do'))}- ${moment(trip.endDate).format('Do YYYY')}`)
   
-    console.log('airPortName', airPortName.data[0].departure.airport.name)
+    doc.text(20,45, `Flight Information:`)
+    
     doc.setFontSize(12);
-    doc.text(20, 65, `Depart: ${airPortName.data[0].departure.airport.name} @ ${airPortName.data[0].departure.scheduledTimeLocal}`);
-    doc.text(20, 70, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}`);
-    doc.text(20, 75, `Return: ${airPortReturn.data[0].departure.airport.name} @ ${airPortReturn.data[0].departure.scheduledTimeLocal}`);
-    doc.text(20, 80, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
+    doc.text(20, 45, `Depart: ${airPortName.data[0].departure.airport.name} @ ${airPortName.data[0].departure.scheduledTimeLocal}`);
+    doc.text(20, 50, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}`);
+    doc.text(20, 55, `Return: ${airPortReturn.data[0].departure.airport.name} @ ${airPortReturn.data[0].departure.scheduledTimeLocal}`);
+    doc.text(20, 60, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
 
 
     doc.text(20, 90, `Departing Flight: ${airPortName.data[0].airline.name} Airlines Flight: ${airPortName.data[0].number} departing at ${airPortName.data[0].departure.scheduledTimeLocal} from ${airPortName.data[0].departure.airport.municipalityName}(${airPortName.data[0].departure.airport.iata}) to ${airPortName.data[0].arrival.airport.municipalityName} (${airPortName.data[0].arrival.airport.iata})`);
 
 
-    doc.text(20, 105, `startDate: ${trip.startDate}`);
-    doc.text(20, 110, `endDate: ${trip.endDate}`);
-    doc.text(20, 115, `userEmail: ${trip.userEmail}`);
+   
     doc.text(20, 120, `airlineCode: ${trip.airlineCode}`);
     doc.text(20, 125, `departureFlightNumber: ${trip.departureFlightNumber}`);
     doc.text(20, 130, `returnFlightNumber: ${trip.returnFlightNumber}`);
