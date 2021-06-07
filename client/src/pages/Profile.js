@@ -80,11 +80,11 @@ function Profile(props) {
             <strong className="d-block text-gray-dark">
              <h4 className="display-6">{trip.tripName}</h4>
               </strong>
-<<<<<<< HEAD
+
             <strong className="d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate}</strong>
-=======
+
             <strong className="lead d-block text-gray-dark">{trip.destination}  ({trip.startDate}) - {trip.endDate})</strong>
->>>>>>> 489a06099d30571910f4203c969502d184fd30d2
+
             </button>
             <button className=" pt-1 pb-1 rounded btn-color ml-5" onClick={() => generatePDF(trip)}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-pdf" viewBox="0 0 16 16">
   <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
