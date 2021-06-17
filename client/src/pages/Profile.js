@@ -11,6 +11,7 @@ import moment from 'moment';
 const generatePDF = async (trip) => {
   
   try {
+    console.log(trip);
     let airPortName = await FlightAPI.getFlightData(trip.departureFlightNumber, trip.airlineCode, trip.startDate)
     let airPortReturn = await FlightAPI.getFlightData(trip.returnFlightNumber, trip.airlineCode, trip.endDate)
 
@@ -19,6 +20,7 @@ const generatePDF = async (trip) => {
     doc.text(37, 20, 'Tripster');
     doc.addImage(logo, 'PNG', 20, 10, 15, 15, 'NONE', 0);
 
+    // display flight information
     doc.setFontSize(15);
     doc.text(80,30,`${trip.tripName}`)
     doc.setFontSize(12);
@@ -28,9 +30,38 @@ const generatePDF = async (trip) => {
     
     doc.setFontSize(12);
     doc.text(20, 55, `Depart: ${airPortName.data[0].departure.airport.name} @ ${moment(airPortName.data[0].departure.scheduledTimeLocal).format('h :m A')}`);
-    doc.text(20, 60, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}}`);
+    if (airPortName.data[0].departure.terminal) {  // check to make sure there has been a departure gate assigned
+      doc.text(20, 60, `Flight: ${trip.departureFlightNumber} @ Gate ${airPortName.data[0].departure.terminal}}`);
+    } else {
+      doc.text(20, 60, `Flight: ${trip.departureFlightNumber} @ Gate (check monitors for gate #)`);
+    }
     doc.text(20, 65, `Return: ${airPortReturn.data[0].departure.airport.name} @ ${moment(airPortReturn.data[0].departure.scheduledTimeLocal).format('h:m A')}`);
-    doc.text(20, 70, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
+    if (airPortName.data[0].arrival.terminal) {  // check to make sure there has been a arrival gate assigned    
+      doc.text(20, 70, `Flight: ${trip.returnFlightNumber} @ Gate ${airPortReturn.data[0].departure.terminal}`);
+    } else {
+      doc.text(20, 70, `Flight: ${trip.returnFlightNumber} @ Gate (check monitors for gate #)`);
+    }
+
+    // display events during trip
+    doc.setFontSize(15);
+    doc.text(20, 80, `${trip.tripName} Events`);
+    doc.line(20, 83, 60, 83);
+
+    doc.setFontSize(12);
+    let y = 95;
+    trip.events.map(eventItem => {
+      doc.text(20, y, `${moment(eventItem.eventDate).format('dddd MMMM Do')} @ ${eventItem.time}`);
+      y += 5;
+      doc.text(20, y, `${eventItem.eventName}`);
+      y += 5;
+      if (eventItem.notes) {
+        doc.text(20, y, `Notes: ${eventItem.notes}`);
+        y += 5;
+      }
+      y += 5;  // add a blank line between events
+    })
+
+
 
     
     doc.save(`${trip.tripName}.pdf`)
